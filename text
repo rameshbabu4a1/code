@@ -1,0 +1,42 @@
+package com.abc;
+
+import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
+
+public class Test88 {
+
+	public static void main(String[] args) {
+		Employee e=new Employee();
+		List<Employee> existList=e.getEmpList();
+		List<Employee> newList=e.getEmpList2();
+		
+		Set<Integer> existIdList = existList.stream()
+                .map(Employee::getId)
+                .collect(Collectors.toSet());
+		
+		Set<Integer> newIdList = newList.stream()
+                .map(Employee::getId)
+                .collect(Collectors.toSet());
+		
+		
+		newList.removeIf( employee ->  existIdList.contains(employee.getId()));
+		existList.removeIf( employee ->  newIdList.contains(employee.getId()));
+		
+		System.out.println("newList>>>>"+newList);
+		System.out.println("newList>>>>"+existList);	
+		
+
+
+		List<Employee> addList = newList.stream().filter(employee ->
+        !existIdList.contains(employee.getId())).collect(Collectors.toList());
+		
+		List<Employee> deleteList = existList.stream().filter(employee ->
+        !newIdList.contains(employee.getId())).collect(Collectors.toList());
+		
+		System.out.println("add>>>>"+addList);
+		System.out.println("delete>>>>"+deleteList);
+
+	}
+
+}
