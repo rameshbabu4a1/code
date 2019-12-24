@@ -36,7 +36,11 @@ public class Test88 {
 		
 		System.out.println("add>>>>"+addList);
 		System.out.println("delete>>>>"+deleteList);
-
+	System.out.println("delete>>>>"+newList);
+		 newList.removeIf(p -> {
+		        return existList.parallelStream().anyMatch(x -> (p.getId() == x.getId()));
+		    });
+		System.out.println("delete>>>>"+newList);
 	}
 
 }
