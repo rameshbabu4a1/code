@@ -42,5 +42,19 @@ public class Test88 {
 		    });
 		System.out.println("delete>>>>"+newList);
 	}
+	
+	   var notifications = [{"id": 1, "notification": "bla"}, {"id": 2, "notification": "bla bla"}];
+
+var data = `[{"id": 1, "notification": "bla"}, {"id": 4, "notification": "bla bla bla"}]`
+
+var val = JSON.parse(data);
+if( val.length > 0 ) {
+   val.forEach((obj)=>{
+     var existNotification = notifications.find(({id}) => obj.id === id);
+     if(!existNotification){
+       notifications.push(obj);
+     }
+   });
+}
 
 }
