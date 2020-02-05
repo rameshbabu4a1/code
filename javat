@@ -1,0 +1,10 @@
+Map<String, String> result =
+				userList.stream().collect(
+                        Collectors.groupingBy(UserRoles::getRoleName,
+                                Collectors.mapping(UserRoles::getGroupname, Collectors.joining(","))
+                        )
+                );
+		
+		for (Map.Entry<String, String> entry : result.entrySet()) {
+		   
+		} 
